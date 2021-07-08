@@ -61,7 +61,6 @@ function LandingPage() {
             </div>
 
 
-
             <div style={{ display: 'flex', justifyContent: 'center' }}>
                 <button> LOAD MORE</button>
             </div>
