@@ -29,7 +29,7 @@ function LandingPage() {
             console.log(response)
             //If you already have props as an object, and you want to pass it in JSX, 
             //you can use ... as a "spread" operator to pass the whole props object.
-            setMovies([...Movies, ...response.results]) //원래 페이지는 유지하고 덧붙혀나가는 방식
+            setMovies([...Movies, ...response.results]) //원래 페이지는 유지하고 덧붙혀나가야 함.
             setMainMovieImage(response.results[0])
             setCurrentPage(response.page)
             
