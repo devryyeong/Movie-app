@@ -1,3 +1,4 @@
+//Grid 스타일을 다른 페이지에서도 쓸 수 있도록 commons 폴더에 따로!
 import React from 'react'
 import { Col } from 'antd';
 

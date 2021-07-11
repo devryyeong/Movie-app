@@ -8,23 +8,39 @@ import { Row } from 'antd';
 
 function LandingPage() {
 
-    const [Movies, setMovies] = useState('')
+    const [Movies, setMovies] = useState([])
     const [MainMovieImage, setMainMovieImage] = useState(null)
+    const [CurrentPage, setCurrentPage] = useState(0)
+
 
     useEffect(()=> {
         const endpoint=`${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
+        fetchMovies(endpoint) //로드되자마자 20개 가져와야함
+        
+    }, []) //deps 파라미터 생략->컴포넌트가 리렌더링될 때마다 호출됨.
 
+
+
+    const fetchMovies=(endpoint)=>{
         //API를 사용하여 백엔드 서버와 비동기 요청
         fetch(endpoint)
         .then(response => response.json())
         .then(response => {
             console.log(response)
-
-            setMovies([...Movies, ...response.results])
+            //If you already have props as an object, and you want to pass it in JSX, 
+            //you can use ... as a "spread" operator to pass the whole props object.
+            setMovies([...Movies, ...response.results]) //원래 페이지는 유지하고 덧붙혀나가는 방식
             setMainMovieImage(response.results[0])
+            setCurrentPage(response.page)
             
         })
-    }, []) //deps 파라미터 생략->컴포넌트가 리렌더링될 때마다 호출됨.
+    }
+
+    const loadMoreItems=()=> {
+        const endpoint=`${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=${CurrentPage+1}`;
+        fetchMovies(endpoint)
+    }
+
 
 
     return (
@@ -40,7 +56,7 @@ function LandingPage() {
                 />
             }
 
-            <div style={{ width: '50%', margin: '1rem auto'}}>
+            <div style={{ width: '75%', margin: '1rem auto'}}>
 
                 <h2>Movies by latest</h2>
                 <hr/>
@@ -62,7 +78,7 @@ function LandingPage() {
 
 
             <div style={{ display: 'flex', justifyContent: 'center' }}>
-                <button> LOAD MORE</button>
+                <button onClick={loadMoreItems}> LOAD MORE</button>
             </div>
 
         </div>
