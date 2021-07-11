@@ -61,7 +61,6 @@ function LandingPage() {
                 <h2>Movies by latest</h2>
                 <hr/>
 
-
                 {/*Movie Grid Cards*/}
                 <Row gutter={[16, 16]}>
                     {Movies && Movies.map((movie, index)=>(
