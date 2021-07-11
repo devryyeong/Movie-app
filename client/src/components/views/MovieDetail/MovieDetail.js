@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import { API_URL, API_KEY, IMAGE_BASE_URL } from '../../Config';
-import MainImage from '../../views/LandingPage/Sections/MainImage'
+import MainImage from '../../views/LandingPage/Sections/MainImage';
+import MovieInfo from './Sections/MovieInfo';
 
 function MovieDetail(props) {
 
@@ -42,7 +43,9 @@ function MovieDetail(props) {
             <div style={{width: '75%', margin: '1rem auto'}}></div>
 
             {/* Movie Info */}
-
+        <MovieInfo 
+            movie={Movie}
+        />
 
 
             <br/>
