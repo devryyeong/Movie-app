@@ -38,7 +38,6 @@ function MovieDetail(props) {
     }
 
 
-
     return (
         <div>
             {/*Header*/}
@@ -49,7 +48,6 @@ function MovieDetail(props) {
                     text={Movie.overview}
                 />
             
-
 
             {/*Body*/}
             <div style={{width: '75%', margin: '1rem auto'}}></div>
@@ -79,8 +77,6 @@ function MovieDetail(props) {
                 ))}
             </Row>
             }
-
-            
 
         </div>
     )

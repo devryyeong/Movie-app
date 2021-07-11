@@ -17,7 +17,7 @@ function LandingPage() {
         const endpoint=`${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
         fetchMovies(endpoint) //로드되자마자 20개 가져와야함
         
-    }, []) //deps 파라미터 생략->컴포넌트가 리렌더링될 때마다 호출됨.
+    }, []) //dependency(deps) parameter 생략->컴포넌트가 리렌더링될 때마다 한번씩만 호출됨.
 
 
 
