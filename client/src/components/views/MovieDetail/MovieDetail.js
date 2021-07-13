@@ -4,6 +4,7 @@ import { API_URL, API_KEY, IMAGE_BASE_URL } from '../../Config';
 import MainImage from '../../views/LandingPage/Sections/MainImage';
 import MovieInfo from './Sections/MovieInfo';
 import GridCards from '../commons/GridCards';
+import Favorite from './Sections/Favorite'
 
 function MovieDetail(props) {
 
@@ -51,6 +52,12 @@ function MovieDetail(props) {
 
             {/*Body*/}
             <div style={{width: '75%', margin: '1rem auto'}}></div>
+            
+            <div style={{ display: 'flex', justifyContent: 'flex-end'}}>
+                {/* 3가지 props를 넣어줘야 함. */}
+                {/* loginPage에서 userId정보를 localstorage에 저장하므로 그 정보를 가져오기 위해 getItem() */}
+                <Favorite movieInfo={Movie} movieId={movieId} userFrom={localStorage.getItem('userId')}/>
+            </div>
 
             {/* Movie Info */}
         <MovieInfo 
