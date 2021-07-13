@@ -16,11 +16,11 @@ function Favorite(props) {
             movieId
         }
 
-        //정보를 얻기 위해 Axios로 DB에 요청을 해야함.
+        //정보를 얻기 위해 Axios로 Server(DB)에 요청을 해야함.
         Axios.post('/api/favorite/favoriteNumber', variables)
         .then(response=> {
             if(response.data.success){
-                //
+                console.log(response.data)
             }else{
                 alert('숫자 정보를 가져오는데 실패함.')
             }

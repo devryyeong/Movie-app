@@ -33,8 +33,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cookieParser());
 
-app.use('/api/users', require('./routes/users'));
 
+//여기에 따로 써주는 이유: 안하면 기능과 관련된 모든 api들을 index.js에 다 넣어야 하므로.
+//엔드포인트가 같은 경로로 찾아가서 알맞는 api주소를 찾아줌.
+app.use('/api/users', require('./routes/users'));
+app.use('/api/favorite', require('./routes/favorite')); 
 
 //use this to show the image you have in node js server to client (react js)
 //https://stackoverflow.com/questions/48914987/send-image-path-from-node-js-express-server-to-react-client
