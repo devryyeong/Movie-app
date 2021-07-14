@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import { Row } from 'antd';
+import { Row, Button } from 'antd';
 import { API_URL, API_KEY, IMAGE_BASE_URL } from '../../Config';
 import MainImage from '../../views/LandingPage/Sections/MainImage';
 import MovieInfo from './Sections/MovieInfo';
@@ -29,7 +29,7 @@ function MovieDetail(props) {
         fetch(endpointCrew)
         .then(response => response.json())
         .then (response => {
-            console.log('responseForCrew', response)
+            //console.log('responseForCrew', response)
             setCasts(response.cast)
         })
     }, [])
@@ -48,7 +48,7 @@ function MovieDetail(props) {
                     title={Movie.original_title}
                     text={Movie.overview}
                 />
-            
+                
 
             {/*Body*/}
             <div style={{width: '75%', margin: '1rem auto'}}></div>
@@ -68,7 +68,7 @@ function MovieDetail(props) {
             <br/>
             {/* Actor Grid */}
             <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem'}}>
-                <button onClick={toggleActorView}> Toggle Actor View</button>
+                <Button onClick={toggleActorView}> Toggle Actor View</Button>
             </div>
 
             {ActorToggle &&
