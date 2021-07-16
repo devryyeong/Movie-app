@@ -1,33 +1,56 @@
 import React, {useEffect, useState} from 'react';
 import './favorite.css';
 import Axios from 'axios';
-import { Popover } from 'antd';
-import { IMAGE_BASE_URL} from '../../Config'
+import { Popover, Button } from 'antd'; //hover effect
+import { IMAGE_BASE_URL} from '../../Config';
 
 function FavoritePage() {
 
     const [Favorites, setFavorites] = useState([])
 
     useEffect(()=> {
+        fetchFavoredMovie()
+    }, [])
+
+
+    const fetchFavoredMovie=()=>{
         Axios.post('/api/favorite/getFavoredMovie', {userFrom: localStorage.getItem('userId')})
         .then(response=> {
             if(response.data.success){
-                console.log(response.data)
+                //console.log(response.data)
                 setFavorites(response.data.favorites)
             }else{
                 alert('영화 정보를 가져오는데 실패함.')
             }
         })
-    }, [])
+    }
 
 
-    const renderCards= Favorites.map((favorite, index)=>{
+    const onClickDelete=(movieId, userFrom)=>{
+        const variables = {
+            movieId,
+            userFrom
+        }
 
-        const content =(
+        Axios.post('/api/favorite/removeFromFavorite', variables)
+        .then(response=>{
+            if(response.data.success){
+                //어떻게 삭제하지?-> 아예 새롭게 다시 fetch
+                fetchFavoredMovie()
+            }else{
+                alert('Favorite list에서 삭제 실패함.')
+            }
+        })
+    }
+
+
+    //Favorit List
+    const renderCards = Favorites.map((favorite, index) => {
+
+        const content = (
             <div>
                 {favorite.moviePost ?
-                    <img src={`${IMAGE_BASE_URL}w500${favorite.moviePost}`} /> : "no image"
-                }
+                    <img src={`${IMAGE_BASE_URL}w500${favorite.moviePost}`} /> : "no image"}
             </div>
         )
 
@@ -36,7 +59,7 @@ function FavoritePage() {
                 <td>{favorite.movieTitle}</td>
             </Popover>
             <td>{favorite.movieRunTime} mins</td>
-            <td><button>Remove</button></td>
+            <td><button onClick={() => onClickDelete(favorite.movieId, favorite.userFrom)}>Remove</button></td>
         </tr>
     })
 

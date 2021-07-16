@@ -4,13 +4,13 @@ import { Button } from 'antd';
 
 function Favorite(props) {
 
-    const movieId=props.movieId
-    const userFrom=props.userFrom
-    const movieTitle=props.movieInfo.title
-    const moviePost=props.movieInfo.backdrop_path
-    const movieRunTime=props.movieInfo.runtime
+    const movieId = props.movieId
+    const userFrom = props.userFrom
+    const movieTitle = props.movieInfo.title
+    const moviePost = props.movieInfo.backdrop_path
+    const movieRunTime = props.movieInfo.runtime
 
-    
+    const [FavoriteNumber, setFavoriteNumber] = useState(0)
     const [Favorited, setFavorited] = useState(false)
     
 
@@ -21,7 +21,6 @@ function Favorite(props) {
         moviePost: moviePost,
         movieRunTime: movieRunTime
     }
-    const [FavoriteNumber, setFavoriteNumber] = useState(0)
     console.log('초기값', FavoriteNumber)
 
     useEffect(()=>{
@@ -86,6 +85,3 @@ function Favorite(props) {
 }
 
 export default Favorite
-
-//DetailPage의 width도 수정해야함 margin안들어감?
-//cast 사진 없는 것들 어떻게 처리????-> #8 질문 참고

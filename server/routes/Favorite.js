@@ -24,7 +24,7 @@ router.post('/favorited', (req, res)=> {
 
         let result=false; //favorite 안누름.
         if(info.length!==0){
-            result=true; //favorite 누름.
+            result=true //favorite 누름.
         }
         res.status(200).json({ success:true, favorited: result})
     })
@@ -36,14 +36,14 @@ router.post('/removeFromFavorite', (req, res)=> {
     Favorite.findOneAndDelete({ moveId: req.body.movieId, userFrom: req.body.userFrom})
     .exec((err, doc)=> {
         if(err) return res.status(400).send(err)
-        return res.status(200).json({ success: true, doc})
+        res.status(200).json({ success: true, doc})
     })
 })
 
 router.post('/addToFavorite', (req, res)=> { 
     //req.body로 받아와서 Favorite DB에 넣어줘야 함.
     //어떻게? document instance를 생성해서 넣어줘야 함. favorite document에 variables의 모든 정보들이 다 들어감
-    const favorite=new Favorite(req.body)
+    const favorite = new Favorite(req.body)
 
     favorite.save((err, doc)=> {
         if(err) return res.status(400).send(err)
@@ -62,5 +62,15 @@ router.post('/getFavoredMovie', (req, res)=> {
 
 
 })
+
+
+router.post('/removeFromFavorite', (req, res)=>{
+    Favorite.findOneAndDelete({ movieId: req.body.movieId, userFrom: req.body.userFrom})
+    .exec((err, result)=>{
+        if(err) return res.status(400).send(err)
+        return res.status(200).json({ success: true })
+    })
+})
+
 
 module.exports = router;
