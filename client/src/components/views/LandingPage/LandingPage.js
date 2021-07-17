@@ -79,7 +79,7 @@ function LandingPage() {
 
 
             <div style={{ display: 'flex', justifyContent: 'center' }}>
-                <Button onClick={loadMoreItems}> LOAD MORE</Button>
+                <Button type="dashed" onClick={loadMoreItems}> LOAD MORE</Button>
             </div>
         </div>
     )
