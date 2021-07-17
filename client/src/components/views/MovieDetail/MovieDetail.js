@@ -65,27 +65,24 @@ function MovieDetail(props) {
         />
 
 
-            <br/>
-            {/* Actor Grid */}
-            <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem'}}>
-                <Button onClick={toggleActorView}> Toggle Actor View</Button>
-            </div>
-
-            {ActorToggle &&
-                <Row gutter={[16, 16]}>
-
-                {Casts && Casts.map((cast, index)=>(
-                    <React.Fragment key={index}>
-                        <GridCards
-                        image={cast.profile_path ? `${IMAGE_BASE_URL}w500${cast.profile_path}` : null}
-                        characterName={cast.name}
-                        />
-                    </React.Fragment>
-                ))}
-            </Row>
-            }
-
+        <br/>
+        {/* Actor Grid */}
+        <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem'}}>
+            <Button onClick={toggleActorView}> Toggle Actor View</Button>
         </div>
+
+        {ActorToggle &&
+            <Row gutter={[16, 16]}>
+
+            {Casts ? Casts.map((cast, index)=>(
+                cast.profile_path &&
+                <GridCards image={cast.profile_path ? `${IMAGE_BASE_URL}w500${cast.profile_path}` : null}/>
+            )) :
+            <div>loading...</div>
+            }
+            </Row>
+        }
+    </div>
     )
 }
 
