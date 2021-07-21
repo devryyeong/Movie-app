@@ -10,9 +10,9 @@ function Favorite(props) {
     const moviePost = props.movieInfo.backdrop_path
     const movieRunTime = props.movieInfo.runtime
 
-
     const [FavoriteNumber, setFavoriteNumber] = useState(0)
     const [Favorited, setFavorited] = useState(false)
+
     let variables = {
         userFrom: userFrom,
         movieId: movieId,
@@ -28,8 +28,8 @@ function Favorite(props) {
         //얼마나 많은 사람이 Favorite button을 눌렀는지 정보를 얻어옴.
         Axios.post('/api/favorite/favoriteNumber', variables)
             .then(response => {
-                setFavoriteNumber(response.data.favoriteNumber)
                 if (response.data.success) {
+                    setFavoriteNumber(response.data.favoriteNumber)
                 } else {
                     alert('숫자 정보를 가져오는데 실패 했습니다.')
                 }
@@ -45,9 +45,6 @@ function Favorite(props) {
                     alert('정보를 가져오는데 실패 했습니다.')
                 }
             })
-
-
-
     }, [])
 
 
@@ -73,7 +70,7 @@ function Favorite(props) {
                         setFavorited(!Favorited)
 
                     } else {
-                        alert('Favorite 리스트에서 추가하는 걸 실패했습니다.')
+                        alert('Favorite 리스트에 추가하는 걸 실패했습니다.')
                     }
                 })
         }
