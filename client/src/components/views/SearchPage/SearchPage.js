@@ -3,7 +3,7 @@ import './search.css';
 import GridCards from '../commons/GridCards';
 import { Row } from 'antd';
 
-import { IMAGE_BASE_URL, SEARCH_API } from '../../Config';
+import { API_URL, API_KEY, IMAGE_BASE_URL } from '../../Config';
 
 function SearchPage() {
     const [SearchTerm, setSearchTerm] = useState('')
@@ -22,7 +22,8 @@ function SearchPage() {
         e.preventDefault();
 
         if(SearchTerm){
-            fetchMovies(SEARCH_API + SearchTerm)
+            const endpoint=`${API_URL}search/movie?api_key=${API_KEY}&query=`;
+            fetchMovies(endpoint + SearchTerm)
             setSearchTerm('')
         }
     };
