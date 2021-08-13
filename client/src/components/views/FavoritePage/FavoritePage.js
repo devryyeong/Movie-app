@@ -11,7 +11,7 @@ function FavoritePage() {
     useEffect(() => {
         fetchFavoredMovie()
     
-    }, [])
+    }, []);
 
 
     const fetchFavoredMovie = () => {
@@ -26,7 +26,6 @@ function FavoritePage() {
     }
 
 
-
     const onClickDelete = (movieId, userFrom) => {
 
         const variables = {
@@ -38,7 +37,7 @@ function FavoritePage() {
             .then(response => {
                 if (response.data.success) {
                     fetchFavoredMovie()
-                } else {
+                } else{
                     alert("리스트에서 지우는데 실패했습니다.")
                 }
             })

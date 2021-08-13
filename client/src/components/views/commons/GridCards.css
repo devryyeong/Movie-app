@@ -1,0 +1,25 @@
+.movie {
+    position: relative;
+    overflow: hidden;
+}
+
+.movie-over {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: white;
+    color: rgb(25, 25, 34);
+    padding: 1rem;
+    overflow: auto;
+    max-height: 100%;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    transform: translateY(102%);
+    transition: transform 0.3s ease-in-out;
+}
+
+.movie:hover .movie-over {
+    transform: translateY(0%);
+    background-color: #d3f2ff;
+} 

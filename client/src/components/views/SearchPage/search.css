@@ -1,0 +1,12 @@
+header {
+    font-size: 24;
+    padding-top: 8;
+}
+
+.search {
+    border: 2px solid;
+    border-radius: 50px;
+    font-size: 1rem;
+    padding: 0.5rem 1.5rem;
+    width: 100%;
+}
