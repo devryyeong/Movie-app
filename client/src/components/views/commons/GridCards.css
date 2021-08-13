@@ -23,3 +23,18 @@
     transform: translateY(0%);
     background-color: #d3f2ff;
 } 
+
+.tag {
+    font-weight: bold;
+}
+
+/* voteAverage별 다른 색 */
+.tag.green {
+    color: green;
+}
+.tag.orange {
+    color: orange;
+}
+.tag.red {
+    color: red;
+}

@@ -3,11 +3,15 @@ import './search.css';
 import GridCards from '../commons/GridCards';
 import { Row } from 'antd';
 
-import { API_URL, API_KEY, IMAGE_BASE_URL, SEARCH_API } from '../../Config';
+import { IMAGE_BASE_URL, SEARCH_API } from '../../Config';
 
 function SearchPage() {
     const [SearchTerm, setSearchTerm] = useState('')
     const [Movies, setMovies] = useState([])
+
+    useEffect(()=>{
+        //
+    }, []);
 
     const fetchMovies=(endpoint)=>{
         fetch(endpoint)
@@ -22,12 +26,6 @@ function SearchPage() {
         e.preventDefault();
 
         if(SearchTerm){
-            fetch(SEARCH_API + SearchTerm)
-            .then(response => response.json())
-            .then((response)=>{
-                setMovies(response.results)
-            });
-
             fetchMovies(SEARCH_API + SearchTerm)
             setSearchTerm('')
         }
@@ -71,8 +69,6 @@ function SearchPage() {
                     ))}
                 </Row>
             </div>
-        
-        
         </div>
     )
 }

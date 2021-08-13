@@ -12,6 +12,16 @@ const Styled={
 
 function GridCards(props) {
 
+    const setVoteClass=(vote)=>{
+        if(vote>=8){
+            return "green";
+        }else if(vote>=6){
+            return "orange";
+        }else{
+            return "red";
+        }
+    };
+
     if(props.landingPage){
         return (
             //한 칼럼에 24라서 4개씩 넣으려면 6
@@ -24,7 +34,7 @@ function GridCards(props) {
 
                     <Styled.wrap>
                         <h4>{props.movieTitle}</h4>
-                        <div>{props.voteAverage}</div>
+                        <span className={`tag ${setVoteClass(props.voteAverage)}`}>{props.voteAverage}</span>
                     </Styled.wrap>
 
                     <div className="movie-over">

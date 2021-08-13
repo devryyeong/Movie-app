@@ -10,3 +10,7 @@ header {
     padding: 0.5rem 1.5rem;
     width: 100%;
 }
+
+.search:focus {
+    outline: 0;
+}
