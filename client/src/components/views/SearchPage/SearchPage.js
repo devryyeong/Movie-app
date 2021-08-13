@@ -9,10 +9,6 @@ function SearchPage() {
     const [SearchTerm, setSearchTerm] = useState('')
     const [Movies, setMovies] = useState([])
 
-    useEffect(()=>{
-        //
-    }, []);
-
     const fetchMovies=(endpoint)=>{
         fetch(endpoint)
         .then(response => response.json())
