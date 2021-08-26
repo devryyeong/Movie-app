@@ -29,8 +29,9 @@ function Favorite(props) {
         //정보를 얻기 위해 Axios로 Server(DB)에 요청을 해야함.
         Axios.post('/api/favorite/favoriteNumber', variables)
             .then(response => {
+                setFavoriteNumber(response.data.favoriteNumber)
                 if (response.data.success) {
-                    setFavoriteNumber(response.data.favoriteNumber)
+                    
                 } else {
                     alert('숫자 정보를 가져오는데 실패 했습니다.')
                 }
