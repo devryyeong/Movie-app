@@ -13,9 +13,10 @@ function Favorite(props) {
     const [FavoriteNumber, setFavoriteNumber] = useState(0)
     const [Favorited, setFavorited] = useState(false)
 
+    //Server(DB)에서 받아오고 싶은 정보들을 같이 넘겨주기 위해 따로.
     let variables = {
-        userFrom: userFrom,
         movieId: movieId,
+        userFrom: userFrom,
         movieTitle: movieTitle,
         moviePost: moviePost,
         movieRunTime: movieRunTime
@@ -24,8 +25,8 @@ function Favorite(props) {
 
     useEffect(() => {
 
+        ////얼마나 많은 사람이 Favorite button을 눌렀는지 정보를 얻어옴.
         //정보를 얻기 위해 Axios로 Server(DB)에 요청을 해야함.
-        //얼마나 많은 사람이 Favorite button을 눌렀는지 정보를 얻어옴.
         Axios.post('/api/favorite/favoriteNumber', variables)
             .then(response => {
                 if (response.data.success) {
@@ -60,8 +61,6 @@ function Favorite(props) {
                         alert('Favorite 리스트에서 지우는 걸 실패했습니다.')
                     }
                 })
-
-
         } else {
             Axios.post('/api/favorite/addToFavorite', variables)
                 .then(response => {

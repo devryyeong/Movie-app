@@ -10,7 +10,6 @@ import Footer from "./views/Footer/Footer";
 import MovieDeatil from "./views/MovieDetail/MovieDetail";
 import FavoritePage from "./views/FavoritePage/FavoritePage"
 import SearchPage from "./views/SearchPage/SearchPage"
-import SocialLoginPage from "./views/LoginPage/SocialLoginPage.js"
 
 //null   Anyone Can go inside
 //true   only logged in user can go inside
@@ -28,7 +27,6 @@ function App() {
           <Route exact path="/movie/:movieId" component={Auth(MovieDeatil, null)} />
           <Route exact path="/favorite" component={Auth(FavoritePage, true)} />
           <Route exact path="/search" component={Auth(SearchPage, null)} />
-          {/* <Route exact path="/login/kakao" component={Auth(SocialLoginPage, false)} /> */}
         </Switch>
       </div>
       <Footer />
